@@ -1,0 +1,46 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+	<title>BLOGER'S BLOG </title>
+	<content> Homepage </content>
+	<slug> bloger-blog </slug>	
+</head>
+
+<body>
+<!-- <div style="background-color: grey ;color: white; height: 90% ;width: 100%; font-size: 20px; text-transform: uppercase;">
+<div style="background-color: red ;color: white; height: 40px ;width: 100%; font-size: 20px; text-transform: uppercase;">
+	Blogger's Blog
+</div> -->
+	<h1 style="background-color: red ;color: white ;"text-align: center;">welcome to BLOGER'S BLOG </h1>
+<p style="text-align : center; padding-top: 10px "> {{name}}</p>
+	<p style= "background-color: grey ;"text-align : center; padding-top: 10px ">
+		        Write your Own Blogs  </p>
+	<form action="/blog/" method="post"> 
+		{%csrf_token%}
+		{{blog_form.as_p}}	
+	<input type ='hidden' value="{{item.id}}" name='id'>
+	<!-- <input type="submit" value="delete"> -->
+	</form>
+<p>users Who Logged in :</p>	
+{%for item in blog_data %}
+ <span style="padding-left: 20px">
+<a href="/blog_detail/{{item.slug}}/"> {{item.name}} </a>{{item.id}} 
+
+     <a href="/blog_detail/{{item.slug}}/" target = "_blank">
+	<img src="{{item.image.url}}"  height="320" width="320"
+			alt="MDN logo"> 
+     </a>
+     </span>
+{%endfor%}
+</p></p>
+<p style="text-align : center; padding-top: 10px "> This Blog_Website is made for a college project </p>
+
+<p style="text-align : center; padding-top: 10px "> Name - Ashish Aswal </p>
+<p style="text-align : center; padding-top: 10px "> Roll No. - 00214807716 </p>
+<p style="text-align : center; padding-top: 10px "> Mahraja Agrasen Institue of Technology </p>
+</pstyle="text-align>
+</div>
+</body>
+
+</html> 

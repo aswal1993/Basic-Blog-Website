@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{{object.name}}</title>	
+	<content>{{object.name}}'s Blog</content>
+	<!-- <slug> {{object.name}} </slug> -->
+</head>
+
+<body>
+	<h1 style="text-align: center;">welcome to BLOGER'S BLOG 
+	</h1>
+	<p>Blog User : {{object.name}} </p>
+	<span style="padding-left: 20px"> {{object.blog|safe}}
+<br>
+	<img src="{{object.image.url}}"  height="420" width="600"
+			alt="MDN logo">  
+	<br>
+{{now}}
+<p style = "padding-top:40px"></p>	
+
+<form action="/blog_comment/" method="post"> 
+		{%csrf_token%}
+	<br>Comment :	{{comment_form.comment}}	
+	<br>Email :	{{comment_form.email}}	
+	<br>Name :	{{comment_form.name}}	
+
+		<input type ='hidden' value='{{object.id}}' name="comment_F">
+		<input type="submit" value="submit"/>
+</form>
+
+<p style = "padding-top:40px" >Comments By people :</p>	
+{%for object in comment %}
+<div>
+
+{{object.name}} : {{object.comment|safe}}
+
+
+<div>
+{%endfor%}
+<p style = "padding-top:40px" ></p>	
+
+<p style = "padding-top:20px">Other Users :</p>	
+{%for object in data %}
+<div>
+<a href="/blog_detail/{{object.slug}}/"> {{object.name}} </a>
+{{object.id}}  
+</div>
+{%endfor%}
+<p style = "padding-top:20px" ></p>	
+<a href="/blog/">
+ <button type="button">HomePage</button> </a>
+</body>
+
+</html> 
